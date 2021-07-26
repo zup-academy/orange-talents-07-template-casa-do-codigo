@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +28,7 @@ public class Author {
     @Size(max = 400)
     private final String description;
 
-    private final LocalDateTime createdAt = LocalDateTime.now();
+    private final Instant createdAt = Instant.now();
 
     public Author(@NotBlank String name,
                   @NotBlank String email,
@@ -71,7 +71,7 @@ public class Author {
         return description;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 }
