@@ -20,7 +20,7 @@ public class AuthorController {
 
     @PostMapping
     public ResponseEntity<Void> save(@Valid @RequestBody AuthorRequest authorRequest) {
-        Author author = authorRequest.toAuthor();
+        Author author = authorRequest.toModel();
 
         authorRepository.save(author);
 

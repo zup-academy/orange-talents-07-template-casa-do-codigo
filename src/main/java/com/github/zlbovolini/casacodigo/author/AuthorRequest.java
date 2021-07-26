@@ -49,7 +49,7 @@ class AuthorRequest {
         return Objects.hash(name, email, description);
     }
 
-    Author toAuthor() {
+    Author toModel() {
         return new Author(name, email, description);
     }
 }
