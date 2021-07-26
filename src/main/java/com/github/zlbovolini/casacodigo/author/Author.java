@@ -24,6 +24,7 @@ public class Author {
     @NotBlank
     @Email
     private final String email;
+    @NotBlank
     @Size(max = 400)
     private final String description;
 
