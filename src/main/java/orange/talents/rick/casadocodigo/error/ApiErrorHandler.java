@@ -37,7 +37,6 @@ public class ApiErrorHandler{
             messageList.add(mensagem);
             errorList.put(e.getField(), messageList);
         });
-
         return new ErrorDto(errorList);
     }
 
