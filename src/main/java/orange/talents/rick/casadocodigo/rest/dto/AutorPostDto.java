@@ -1,11 +1,11 @@
 package orange.talents.rick.casadocodigo.rest.dto;
 
 import orange.talents.rick.casadocodigo.model.Autor;
+import orange.talents.rick.casadocodigo.rest.validator.EmailNaoDuplicado;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class AutorPostDto {
@@ -16,6 +16,7 @@ public class AutorPostDto {
     @NotNull
     @NotBlank
     @Email
+    @EmailNaoDuplicado
     private String email;
     @NotBlank
     @NotNull
