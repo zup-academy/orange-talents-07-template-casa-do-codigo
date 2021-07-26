@@ -12,10 +12,13 @@ class AuthorRequest {
     @NotBlank
     @Email
     private final String email;
+    @NotBlank
     @Size(max = 400)
     private final String description;
 
-    AuthorRequest(String name, String email, String description) {
+    AuthorRequest(@NotBlank String name,
+                  @NotBlank @Email String email,
+                  @NotBlank @Size(max = 400) String description) {
         this.name = name;
         this.email = email;
         this.description = description;

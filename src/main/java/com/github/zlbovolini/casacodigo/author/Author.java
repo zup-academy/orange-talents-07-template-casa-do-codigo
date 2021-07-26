@@ -31,7 +31,7 @@ public class Author {
     private final Instant createdAt = Instant.now();
 
     public Author(@NotBlank String name,
-                  @NotBlank String email,
+                  @NotBlank @Email String email,
                   @NotBlank @Size(max = 400) String description) {
 
         List<String> parameters = Arrays.asList(name, email, description);
@@ -49,7 +49,7 @@ public class Author {
 
     public Author(Long id,
                   @NotBlank String name,
-                  @NotBlank String email,
+                  @NotBlank @Email String email,
                   @NotBlank @Size(max = 400) String description) {
         this(name, email, description);
         this.id = id;
