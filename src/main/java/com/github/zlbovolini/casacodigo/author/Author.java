@@ -8,6 +8,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Author {
@@ -27,16 +30,23 @@ public class Author {
     private final LocalDateTime createdAt = LocalDateTime.now();
 
     public Author(String name, String email, String description) {
+
+        List<String> parameters = Arrays.asList(name, email, description);
+        boolean hasInconsistency = parameters.stream()
+                .anyMatch(parameter -> Objects.isNull(parameter) || parameter.isBlank());
+
+        if (hasInconsistency) {
+            throw new IllegalArgumentException("There is some invalid value");
+        }
+
         this.name = name;
         this.email = email;
         this.description = description;
     }
 
     public Author(Long id, String name, String email, String description) {
+        this(name, email, description);
         this.id = id;
-        this.name = name;
-        this.email = email;
-        this.description = description;
     }
 
     public Long getId() {
