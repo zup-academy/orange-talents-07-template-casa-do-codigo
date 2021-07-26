@@ -30,7 +30,9 @@ public class Author {
 
     private final LocalDateTime createdAt = LocalDateTime.now();
 
-    public Author(String name, String email, String description) {
+    public Author(@NotBlank String name,
+                  @NotBlank String email,
+                  @NotBlank @Size(max = 400) String description) {
 
         List<String> parameters = Arrays.asList(name, email, description);
         boolean hasInconsistency = parameters.stream()
@@ -45,7 +47,10 @@ public class Author {
         this.description = description;
     }
 
-    public Author(Long id, String name, String email, String description) {
+    public Author(Long id,
+                  @NotBlank String name,
+                  @NotBlank String email,
+                  @NotBlank @Size(max = 400) String description) {
         this(name, email, description);
         this.id = id;
     }
