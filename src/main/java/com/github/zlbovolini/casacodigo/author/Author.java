@@ -28,31 +28,33 @@ public class Author {
     @Size(max = 400)
     private final String description;
 
-    private final Instant createdAt = Instant.now();
+    private final Instant createdAt;
 
     public Author(@NotBlank String name,
                   @NotBlank @Email String email,
                   @NotBlank @Size(max = 400) String description) {
-
-        List<String> parameters = Arrays.asList(name, email, description);
-        boolean hasInconsistency = parameters.stream()
-                .anyMatch(parameter -> Objects.isNull(parameter) || parameter.isBlank());
-
-        if (hasInconsistency) {
-            throw new IllegalArgumentException("There is some invalid value");
-        }
+        // Throw IllegalArgumentException if some argument is invalid
+        checkArguments(Arrays.asList(name, email, description));
 
         this.name = name;
         this.email = email;
         this.description = description;
+        this.createdAt = Instant.now();
     }
 
     public Author(Long id,
                   @NotBlank String name,
                   @NotBlank @Email String email,
-                  @NotBlank @Size(max = 400) String description) {
-        this(name, email, description);
+                  @NotBlank @Size(max = 400) String description,
+                  Instant createdAt) {
+        // Throw IllegalArgumentException if some parameter is invalid
+        checkArguments(Arrays.asList(name, email, description));
+
         this.id = id;
+        this.name = name;
+        this.email = email;
+        this.description = description;
+        this.createdAt = createdAt;
     }
 
     public Long getId() {
@@ -73,5 +75,14 @@ public class Author {
 
     public Instant getCreatedAt() {
         return createdAt;
+    }
+
+    private void checkArguments(List<String> arguments) {
+        boolean hasInconsistency = arguments.stream()
+                .anyMatch(argument -> Objects.isNull(argument) || argument.isBlank());
+
+        if (hasInconsistency) {
+            throw new IllegalArgumentException("There is some invalid value");
+        }
     }
 }
