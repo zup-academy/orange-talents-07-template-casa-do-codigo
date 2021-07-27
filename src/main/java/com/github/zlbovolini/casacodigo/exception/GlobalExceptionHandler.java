@@ -3,6 +3,7 @@ package com.github.zlbovolini.casacodigo.exception;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,7 +21,7 @@ public class GlobalExceptionHandler {
         this.messageSource = messageSource;
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class, BindException.class })
     public ResponseEntity<ApiErrorResponse> handleMethodArgumentNotValid(MethodArgumentNotValidException e) {
 
         List<ObjectError> globalErrors = e.getBindingResult().getGlobalErrors();
