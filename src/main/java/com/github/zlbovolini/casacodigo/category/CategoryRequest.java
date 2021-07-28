@@ -1,13 +1,17 @@
 package com.github.zlbovolini.casacodigo.category;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.github.zlbovolini.casacodigo.validation.constraint.EnableUnique;
+import com.github.zlbovolini.casacodigo.validation.constraint.Unique;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
-class CategoryRequest {
+@EnableUnique(entity = Category.class)
+public class CategoryRequest {
 
     @NotBlank
+    @Unique
     private final String name;
 
     @JsonCreator
