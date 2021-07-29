@@ -27,7 +27,7 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
     public boolean isValid(Object fieldValue, final ConstraintValidatorContext context) {
 
         StringBuilder stringBuilder = new StringBuilder()
-                .append("SELECT CASE WHEN COUNT(e) > 0 THEN false ELSE true END FROM ")
+                .append("SELECT COUNT(e) = 0 FROM ")
                 .append(entity.getName())
                 .append(" e WHERE e.")
                 .append(field)
