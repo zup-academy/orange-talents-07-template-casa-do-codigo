@@ -71,10 +71,10 @@ public class BookRequest {
         return new Book(title, resume, summary, price, pages, isbn, publishedOn, category, author);
     }
 
-    public LocalDate getPublishedOn() {
-        return publishedOn;
-    }
-
+    /**
+     * Necessário para realizar a desserializaçãoo da data, pois pelo construtor não funciona.
+     * @param publishedOn
+     */
     public void setPublishedOn(LocalDate publishedOn) {
         this.publishedOn = publishedOn;
     }
