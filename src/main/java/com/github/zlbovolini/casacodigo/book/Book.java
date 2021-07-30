@@ -24,6 +24,7 @@ public class Book {
     @Size(max = 500)
     private String resume;
 
+    @NotBlank
     @Column(columnDefinition = "TEXT")
     private String summary;
 

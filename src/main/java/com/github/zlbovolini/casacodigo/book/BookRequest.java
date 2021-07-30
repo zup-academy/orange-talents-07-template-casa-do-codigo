@@ -22,6 +22,7 @@ public class BookRequest {
     private String resume;
 
     //@Size(max = 10000)
+    @NotBlank
     private String summary;
 
     @NotNull
