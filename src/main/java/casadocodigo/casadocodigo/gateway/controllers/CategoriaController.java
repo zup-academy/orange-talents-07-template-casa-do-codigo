@@ -3,6 +3,7 @@ package casadocodigo.casadocodigo.gateway.controllers;
 import casadocodigo.casadocodigo.dto.CategoriaDTO;
 import casadocodigo.casadocodigo.entities.Categoria;
 import casadocodigo.casadocodigo.gateway.repositories.CategoriaRepository;
+import casadocodigo.casadocodigo.util.validators.CategoriaValidator;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +27,7 @@ public class CategoriaController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @Transactional
-    public String cadastraCategoria( @Valid CategoriaDTO request){
+    public String cadastraCategoria(@RequestBody @Validated(CategoriaValidator.class) @Valid CategoriaDTO request){
 
         Categoria categoria = new Categoria(request.getNome());
         manager.persist(categoria);
