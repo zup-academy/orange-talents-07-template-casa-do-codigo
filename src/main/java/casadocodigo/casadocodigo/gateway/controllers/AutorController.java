@@ -1,8 +1,8 @@
-package casadocodigo.casadocodigo.gateway.controller.controllers;
+package casadocodigo.casadocodigo.gateway.controllers;
 
 import casadocodigo.casadocodigo.dto.AutorDTO;
 import casadocodigo.casadocodigo.entities.Autor;
-import casadocodigo.casadocodigo.gateway.controller.repositories.AutorRepository;
+import casadocodigo.casadocodigo.gateway.repositories.AutorRepository;
 import casadocodigo.casadocodigo.util.validators.AutorValidator;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;

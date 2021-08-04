@@ -2,7 +2,7 @@ package casadocodigo.casadocodigo.util.validators;
 
 
 import casadocodigo.casadocodigo.dto.AutorDTO;
-import casadocodigo.casadocodigo.gateway.controller.repositories.AutorRepository;
+import casadocodigo.casadocodigo.gateway.repositories.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
